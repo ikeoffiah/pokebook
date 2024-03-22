@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+const pinkColor = Color(0xffE85482);
+const blackColor = Color(0xff000000);
+const whiteColor = Color(0xffFFFFFF);
+const greyColor = Color(0xff7B7B7B);
+const shadowColor = Color(0xffF0F0F0);
+const borderColor = Color(0xffE1E1E1);
+const cardColor = Color(0xffF1F1F1);
+const greyButtonColor = Color(0xffEEEEEE);
+const paginationButtonColor = Color(0xffE1E1E1);
+const navBarBackgroundColor = Color(0xffE9E9E9);
+const progressBarColor = Color(0xffCBCBCB);
+const cardBorderColor = Color(0xffDFDFDF);
+const blueColor = Color(0xff40BADD);
+const yellowColor = Color(0xffDAA32A);
+const pinkColor2 = Color(0xffDE527F);
+const blackColor2 = Color(0xff0D131A);
+const greyColor2 = Color(0xff868686);
+const whiteColor2 = Color(0xffFCFCFC);
