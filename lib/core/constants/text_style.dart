@@ -24,4 +24,13 @@ final greyText40018 = GoogleFonts.sofiaSans(
     fontSize: 18, fontWeight: FontWeight.w400, color: greyColor);
 
 final blackTextUnderline250018 = GoogleFonts.sofiaSans(
-    fontSize: 18, fontWeight: FontWeight.w500, color: blackColor2, decoration: TextDecoration.underline);
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: blackColor2,
+    decoration: TextDecoration.underline);
+
+final blackText50032p33 = GoogleFonts.sofiaSans(
+    fontSize: 32.33, fontWeight: FontWeight.w500, color: blackColor);
+
+final blackText40021p56 = GoogleFonts.sofiaSans(
+    fontSize: 21.56, fontWeight: FontWeight.w400, color: blackColor);
