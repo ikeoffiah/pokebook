@@ -8,6 +8,7 @@ import 'package:pokebook/core/constants/text_style.dart';
 import 'package:pokebook/widgets/appBars/list_view_app_bar.dart';
 import 'package:pokebook/widgets/cards/pokemon_card.dart';
 import 'package:pokebook/widgets/containers/custom_container.dart';
+import 'package:pokebook/widgets/pokebook_feature_button.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class ListViewScreen extends StatefulWidget {
@@ -17,7 +18,31 @@ class ListViewScreen extends StatefulWidget {
   State<ListViewScreen> createState() => _ListViewScreenState();
 }
 
-late List _pokemonCards = [PokemonCard(), PokemonCard()];
+List _pokemonCards = [
+  const PokemonCard(
+    title: "charizard",
+    imagePath: "assets/images/dragon1.svg",
+    feature: [FeatureButton(text: "🔥 Fire"), FeatureButton(text: "🦋 Flying")],
+  ),
+  const PokemonCard(
+      title: "ivysaur",
+      imagePath: "assets/images/frog.svg",
+      feature: [
+        FeatureButton(text: "🌿 Grass"),
+        FeatureButton(text: "☠️ Poison")
+      ]),
+  const PokemonCard(
+      title: "raticate",
+      imagePath: "assets/images/rat.svg",
+      feature: [FeatureButton(text: "🐻 Normal")]),
+  const PokemonCard(
+      title: "beedrill",
+      imagePath: "assets/images/insect.svg",
+      feature: [
+        FeatureButton(text: "🐞 Bug"),
+        FeatureButton(text: "☠️ Poison")
+      ])
+];
 
 class _ListViewScreenState extends State<ListViewScreen> {
   @override
@@ -119,7 +144,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
             ),
             content: Container(
               margin: marginBetweenSearchBarandCard,
-              height: _pokemonCards.length * 430,
+              height: _pokemonCards.length * 440,
               child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,

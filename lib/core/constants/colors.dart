@@ -18,3 +18,5 @@ const pinkColor2 = Color(0xffDE527F);
 const blackColor2 = Color(0xff0D131A);
 const greyColor2 = Color(0xff868686);
 const whiteColor2 = Color(0xffFCFCFC);
+const greenColor = Color(0xff69BCC5);
+const greyColor3 = Color(0xffD9D9D9);
