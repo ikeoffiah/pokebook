@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokebook/bloc/color_bloc/color_bloc.dart';
 import 'package:pokebook/bloc/nav_bloc/nav_bloc.dart';
-import 'package:pokebook/bloc/poke_book_card_bloc/poke_book_bloc.dart';
 import 'package:pokebook/views/home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<PokebookBloc>(create: (context) => PokebookBloc()),
-        BlocProvider<NavBloc>(create: (context) => NavBloc())
+        
+        BlocProvider<NavBloc>(create: (context) => NavBloc()),
+                
+        BlocProvider<ColorBloc>(create: (context) => ColorBloc())
       ],
       child: MaterialApp(
         title: 'Pokebook',

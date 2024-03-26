@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pokebook/bloc/color_bloc/color_bloc.dart';
+import 'package:pokebook/bloc/color_bloc/color_event.dart';
+import 'package:pokebook/bloc/color_bloc/color_state.dart';
 import 'package:pokebook/core/constants/box_shawdow.dart';
 import 'package:pokebook/core/constants/colors.dart';
 import 'package:pokebook/core/constants/margins.dart';
@@ -10,6 +13,7 @@ import 'package:pokebook/widgets/cards/pokemon_card.dart';
 import 'package:pokebook/widgets/containers/custom_container.dart';
 import 'package:pokebook/widgets/pokebook_feature_button.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ListViewScreen extends StatefulWidget {
   const ListViewScreen({super.key});
@@ -44,6 +48,10 @@ List _pokemonCards = [
       ])
 ];
 
+bool isPink = false;
+bool isBlue = false;
+bool isYellow = false;
+
 class _ListViewScreenState extends State<ListViewScreen> {
   @override
   Widget build(BuildContext context) {
@@ -71,12 +79,99 @@ class _ListViewScreenState extends State<ListViewScreen> {
                                   text: "Poké",
                                   style: blackText60021p16,
                                   children: [
+                                
+                                
                                 TextSpan(text: "book", style: pinkText60021p16)
                               ])),
                           Expanded(child: Container()),
                           InkWell(
-                            onTap: () {},
-                            child: Container(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return StatefulBuilder(
+                                        builder: (context, setState) {
+                                      return Center(
+                                        child: Container(
+                                          margin: pageMargin,
+                                          height: 240.77,
+                                          decoration: BoxDecoration(
+                                              color: whiteColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(30))),
+                                          child: CustomContainer(
+                                              child: Column(
+                                            children: [
+                                              Container(
+                                                height: 52.18,
+                                                child: Center(
+                                                  child: DefaultTextStyle(
+                                                      style: blackText60020,
+                                                      child:
+                                                          Text("Choose Theme")),
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  color: borderColor
+                                                      .withOpacity(0.4),
+                                                  child: Center(
+                                                    child: Container(
+                                                      child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            buildColor(
+                                                                pinkColor,
+                                                                isPink, () {
+                                                                  context.read<ColorBloc>().add(ColorPinkEvent());
+                                                              setState(() {
+                                                                isPink = true;
+                                                                isBlue = false;
+                                                                isYellow =
+                                                                    false;
+                                                              });
+                                                            }),
+                                                            width5,
+                                                            buildColor(
+                                                                blueColor,
+                                                                isBlue, () {
+                                                                  context.read<ColorBloc>().add(ColorBlueEvent());
+                                                              setState(() {
+                                                                isPink = false;
+                                                                isBlue = true;
+                                                                isYellow =
+                                                                    false;
+                                                              });
+                                                            }),
+                                                            width5,
+                                                            buildColor(
+                                                                yellowColor,
+                                                                isYellow, () {
+                                                              context.read<ColorBloc>().add(ColorYellowEvent());
+                                                              setState(() {
+                                                                isPink = false;
+                                                                isBlue = false;
+                                                                isYellow = true;
+                                                              });
+                                                            })
+                                                          ]),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          )),
+                                        ),
+                                      );
+                                    });
+                                  });
+                            },
+
+                           
+                            child:  BlocBuilder<ColorBloc, ColorState>(builder: (context, state){
+                              return Container(
                               margin: pageMargin,
                               child: Container(
                                 height: 42,
@@ -91,13 +186,14 @@ class _ListViewScreenState extends State<ListViewScreen> {
                                 child: Container(
                                     height: 32.49,
                                     width: 32.49,
-                                    decoration: const BoxDecoration(
-                                      color: pinkColor,
+                                    decoration: BoxDecoration(
+                                      color: state.color,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(46.67)),
                                     )),
                               ),
-                            ),
+                            );
+                            }),
                           )
                         ],
                       ),
@@ -159,3 +255,29 @@ class _ListViewScreenState extends State<ListViewScreen> {
     );
   }
 }
+
+Widget buildColor(Color color, bool isActive, VoidCallback onClick) =>
+    GestureDetector(
+      onTap: onClick,
+      child: Container(
+        margin: pageMargin,
+        child: Container(
+          height: 42,
+          width: 42,
+          padding: changeColorButtonPadding,
+          decoration: isActive
+              ? BoxDecoration(
+                  color: whiteColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(46.67)),
+                  border: Border.all(width: 0.93, color: greyColor2))
+              : BoxDecoration(color: Colors.transparent),
+          child: Container(
+              height: 32.49,
+              width: 32.49,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: const BorderRadius.all(Radius.circular(46.67)),
+              )),
+        ),
+      ),
+    );

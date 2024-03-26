@@ -39,6 +39,9 @@ final blackTextUnderline250018 = GoogleFonts.sofiaSans(
 final blackText50032p33 = GoogleFonts.sofiaSans(
     fontSize: 32.33, fontWeight: FontWeight.w500, color: blackColor);
 
+final blackText50026p59 = GoogleFonts.sofiaSans(
+    fontSize: 26.59, fontWeight: FontWeight.w500, color: blackColor);
+
 final blackText40021p56 = GoogleFonts.sofiaSans(
     fontSize: 21.56, fontWeight: FontWeight.w400, color: blackColor);
 
@@ -50,3 +53,6 @@ final blackText60056 = GoogleFonts.sofiaSans(
 
 final blackText60019p37 = GoogleFonts.sofiaSans(
     fontSize: 19.37, fontWeight: FontWeight.w600, color: blackColor);
+
+final blackText60020 = GoogleFonts.sofiaSans(
+    fontSize: 20, fontWeight: FontWeight.w600, color: blackColor);

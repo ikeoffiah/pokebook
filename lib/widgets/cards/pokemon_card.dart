@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokebook/bloc/poke_book_card_bloc/poke_book_bloc.dart';
-import 'package:pokebook/bloc/poke_book_card_bloc/poke_book_event.dart';
+import 'package:pokebook/bloc/nav_bloc/nav_bloc.dart';
+import 'package:pokebook/bloc/nav_bloc/nav_event.dart';
 import 'package:pokebook/core/constants/box_shawdow.dart';
 import 'package:pokebook/core/constants/colors.dart';
 import 'package:pokebook/core/constants/margins.dart';
@@ -25,7 +25,7 @@ class PokemonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-       
+       context.read<NavBloc>().add(NavPreviewEvent());
         Navigator.push(
             context,
             MaterialPageRoute(
